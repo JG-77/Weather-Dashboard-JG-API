@@ -7,10 +7,10 @@ console.log(citySearch);
 
 function getLatandLon() {
     var citySearchValue = citySearch.value;
-    var apiLocation = 'api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
+    var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
+    
 
     fetch(apiLocation)
-
     .then(function (response) {
         if (response.ok) {
           console.log(response);
