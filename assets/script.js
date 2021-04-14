@@ -15,15 +15,14 @@ function getLatandLon() {
           console.log(response);
           response.json().then(function (data) {
             console.log(data);
-            displayRepos(data, user);
+        
           });
-        } else {
-          alert('Error: ' + response.statusText);
-        }
+        } 
       })
 
 
 }
 
 
-searchButton.addEventListener('click', getLatandLon);
+//searchButton.addEventListener('click', getLatandLon);
+searchButton.addEventListener('click', console.log(citySearchValue)); //how do I get search input to appear?
