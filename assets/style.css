@@ -1,0 +1,17 @@
+main {
+   display:flex 
+}
+.container-body {
+    border: solid black;
+    max-width: 75%;
+    min-width: 75%;
+    padding: 5px;
+    margin: 5px
+}
+
+.custom-side {
+    border: solid black;
+    max-width: 25%;
+    padding: 5px;
+    margin: 5px
+}
