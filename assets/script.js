@@ -1,11 +1,12 @@
 var apiKey = '55a9555759d9fcad973a8dd20ec8edde';
 //api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key} -->lon and lat api
 //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key} --> one call api
-var citySearchValue = document.getElementById('citySearch').value;
+var citySearch = document.getElementById('citySearch');
 var searchButton = document.getElementById('searchBtn');
-console.log(citySearchValue);
+console.log(citySearch);
 
 function getLatandLon() {
+    var citySearchValue = citySearch.value;
     var apiLocation = 'api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
 
     fetch(apiLocation)
@@ -25,4 +26,5 @@ function getLatandLon() {
 
 
 //searchButton.addEventListener('click', getLatandLon);
-searchButton.addEventListener('click', console.log(citySearchValue)); //how do I get search input to appear?
+searchButton.addEventListener('click', getLatandLon); //404 error
+
