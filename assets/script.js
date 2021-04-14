@@ -16,15 +16,19 @@ function getLatandLon() {
           console.log(response);
           response.json().then(function (data) {
             console.log(data);
-        
+            console.log(lat);
+            console.log(lon);
+            var lat = data.coord.lat
+            var lon = data.coord.lon
+
+
           });
         } 
+        
       })
-
 
 }
 
 
-//searchButton.addEventListener('click', getLatandLon);
-searchButton.addEventListener('click', getLatandLon); //404 error
+searchButton.addEventListener('click', getLatandLon); 
 
