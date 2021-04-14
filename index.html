@@ -19,7 +19,8 @@
 </head>
 
 <body>
-    <header class="jumbotron jumbotron-fluid custom-jumbo">
+<!-- page Header-->
+    <header class="custom-jumbo">
         <div class="container">
           <h1 class="display-4">Weather Dash</h1>
           <p class="lead">Check the most up to date weather forecasts across the nation!</p>
@@ -27,16 +28,17 @@
     </header>
     
     <main>
+        <!-- Sidebar with searchbar-->
     <aside class="input-group custom-side">
         <h2>Search for a city</h2>
         <div class="form-outline custom-form">
-            <input type="search" id="form1" class="form-control" placeholder="Enter city name" />
-            <button type="button" class="btn btn-primary">
+            <input type="search" id="citySearch" class="form-control" placeholder="Enter city name" />
+            <button type="button" class="btn btn-primary" id="searchBtn">
                 <i class="fas fa-search"></i>
             </button>
         </div>
     </aside>
-    
+    <!-- container displaying current climate-->
     <section class="container-body">
         <h2 id="cityName"> City</h2>
         <p id="temperature">Temperature:</p>
@@ -44,7 +46,7 @@
         <p id="wind">Wind Speed:</p>
         <p id="uvi">UV Index:</p>
     </section>
-
+<!-- container displaying 5 day forecast-->
     <section class="container-body">
         <h2 id="5DayHeading"> 5-Day Forecast</h2>
         <div id="5DayItems">
