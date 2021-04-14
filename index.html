@@ -19,31 +19,37 @@
 </head>
 
 <body>
-    <header class="jumbotron jumbotron-fluid bg-warning">
+    <header class="jumbotron jumbotron-fluid custom-jumbo">
         <div class="container">
           <h1 class="display-4">Weather Dash</h1>
           <p class="lead">Check the most up to date weather forecasts across the nation!</p>
         </div>
     </header>
-
+    
     <main>
-        <div class="input-group custom-side">
-                <h3>Search for a city</h3>
-            <div class="form-outline">
-                  <label class="form-label" for="form1">Search for a city</label>
-                  <input type="search" id="form1" class="form-control" placeholder="Enter city name" />
-                  <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                  </button>
-            </div>
-         </div>
+    <aside class="input-group custom-side">
+        <h2>Search for a city</h2>
+        <div class="form-outline custom-form">
+            <input type="search" id="form1" class="form-control" placeholder="Enter city name" />
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </aside>
+    
+    <section class="container-body">
+        <h2 id="cityName"> City</h2>
+        <p id="temperature">Temperature:</p>
+        <p id="humidity">Humidity:</p>
+        <p id="wind">Wind Speed:</p>
+        <p id="uvi">UV Index:</p>
+    </section>
 
     <section class="container-body">
-        <h2 id="cityName" placeholder="City"></h2>
-        <p>Temperature:</p>
-        <p>Humidity:</p>
-        <p>Wind Speed:</p>
-        <p>UV Index:</p>
+        <h2 id="5DayHeading"> 5-Day Forecast</h2>
+        <div id="5DayItems">
+            <!-- 5 day forecast goes in here-->
+        </div>
     </section>
 
     </main>

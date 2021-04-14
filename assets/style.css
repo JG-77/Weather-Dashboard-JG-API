@@ -1,17 +1,30 @@
 main {
-   display:flex 
+display: block;
 }
+.custom-jumbo {
+    background-image: linear-gradient(to right, blue, rgb(117, 117, 255), yellow);
+    text-align: center;
+    color:white;
+}
+
 .container-body {
+    display: block;
     border: solid black;
-    max-width: 75%;
-    min-width: 75%;
+    max-width: 70%;
+    min-width: 70%;
     padding: 5px;
-    margin: 5px
+    margin: 5px;
+    float: right;
 }
 
 .custom-side {
     border: solid black;
     max-width: 25%;
     padding: 5px;
-    margin: 5px
+    margin: 5px;
+    float: left;
+}
+
+.custom-form {
+display: flex;
 }
