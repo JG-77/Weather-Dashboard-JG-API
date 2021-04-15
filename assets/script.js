@@ -15,13 +15,16 @@ function getLatandLon() {
         if (response.ok) {
           console.log(response);
           response.json().then(function (data) {
+            var lat = data.coord.lat;
+            var lon = data.coord.lon;
+            var tempKelvin = data.main.temp;
+            var tempFahrenheit = 1.8 * (tempKelvin - 273) +32; 
+            var humidity = data.main.humidity;
+            var windSpeed = data.wind.speed;
+
             console.log(data);
-            console.log(lat);
-            console.log(lon);
-            var lat = data.coord.lat
-            var lon = data.coord.lon
-
-
+            console.log(tempFahrenheit);
+            
           });
         } 
         
