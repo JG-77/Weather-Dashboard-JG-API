@@ -21,7 +21,7 @@ function getLatandLon() {
         response.json().then(function (data) {
           var lat = data.coord.lat;
           var lon = data.coord.lon;
-          var tempKelvin = data.main.temp;
+          var tempKelvin = data.main.temp;   //.Math.round( # * 100);
           var tempFahrenheit = 1.8 * (tempKelvin - 273) +32; 
           var humidity = data.main.humidity;
           var windSpeed = data.wind.speed;
@@ -29,6 +29,7 @@ function getLatandLon() {
           temperatureEl.textContent = 'Temperature: ' + tempFahrenheit;
           humidityEl.textContent = 'Humidity: ' + humidity;
           windEl.textContent = 'Wind Speed: ' + windSpeed;
+
             console.log(response);
             console.log(data);
             console.log(lat);
