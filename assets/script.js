@@ -47,21 +47,15 @@ function getData() {
                 var uvi = data.current.uvi;
                 uviEl.textContent = uvi;
                 if (uvi <= 2) {
-                  uviEl.style.backgroundColor = 'green';
-                  uviEl.style.color = 'white';
+                  uviEl.setAttribute('class', 'bg-success text-white');
                   console.log('Weather conditions are favorable.');
                 } else if (3 <= uvi && uvi<= 5) {
-                  uviEl.style.backgroundColor = 'orange';
-                  uviEl.style.color = 'white';
+                  uviEl.setAttribute('class', 'bg-warning text-white');
                   console.log('Weather conditions are moderate.');
                 } else {
-                  uviEl.style.backgroundColor = 'red';
-                  uviEl.style.color = 'white';
+                  uviEl.setAttribute('class', 'bg-danger text-white');
                   console.log('Weather conditions are severe.');
                 }
-                
-                console.log(data);
-                console.log(data.daily.uvi);
               }
               )}
             })
