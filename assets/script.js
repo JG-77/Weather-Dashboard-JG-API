@@ -24,18 +24,21 @@ function getLatandLon() {
         response.json().then(function (data) {
           var lat = data.coord.lat;
           var lon = data.coord.lon;
-          var tempKelvin = data.main.temp;   //.Math.round( # * 100);
-          var tempFahrenheit = 1.8 * (tempKelvin - 273) +32; 
+          var tempKelvin = data.main.temp;  
+          var tempFahrenheit = (1.8 * (tempKelvin - 273) +32).toFixed(2); 
           var humidity = data.main.humidity;
           var windSpeed = data.wind.speed;
           var cityName = data.name;
           var currently = moment().format('MMM DD, YYYY');
+          console.log(tempFahrenheit);
+          console.log(data);
           
           temperatureEl.textContent = 'Temperature: ' + tempFahrenheit;
           humidityEl.textContent = 'Humidity: ' + humidity;
           windEl.textContent = 'Wind Speed: ' + windSpeed;
           cityNameHeader.textContent = cityName + ' - ' + currently;
           });
+          
         } else {
           cityNameHeader.style.color = 'red';
           cityNameHeader.textContent = "Error! (400) Please type in a city name";
