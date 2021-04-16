@@ -39,7 +39,9 @@ function getData() {
               response.json().then(function (data) {
                 var uvi = data.current.uvi;
                 var weatherIcon = data.current.weather[0].icon; //how do I get icon to display?
-                cityNameHeader.textContent = cityName + ' - ' + currently + ' ' + weatherIcon;
+                var weatherPNG = 'https://openweathermap.org/img/wn/' + weatherIcon + '@2x.png';
+                //weatherPNG.innerHTML = '<img src= >';
+                cityNameHeader.textContent = cityName + ' - ' + currently + ' ' + weatherPNG;
                 uviEl.textContent = uvi;
                 console.log(data.current.weather[0].icon);
                 console.log(data);
