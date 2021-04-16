@@ -31,6 +31,7 @@ function getData() {
           humidityEl.textContent = 'Humidity: ' + humidity + '%';
           windEl.textContent = 'Wind Speed: ' + windSpeed + ' MPH';
           cityNameHeader.style.color = 'blue';
+          cityNameHeader.textContent = cityName + ' - ' + currently;
           //second API call
           var apiUVI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + lon + '&appid=' + apiKey;
           fetch(apiUVI)
@@ -39,12 +40,11 @@ function getData() {
               response.json().then(function (data) {
                 var uvi = data.current.uvi;
                 var weatherIcon = data.current.weather[0].icon; //how do I get icon to display?
-                var weatherPNG = 'https://openweathermap.org/img/wn/' + weatherIcon + '@2x.png';
-                //weatherPNG.innerHTML = '<img src= >';
-                cityNameHeader.textContent = cityName + ' - ' + currently + ' ' + weatherPNG;
+                var icon = document.createElement("img");
+                icon.src = 'https://openweathermap.org/img/wn/' + weatherIcon + '@2x.png';
+                cityNameHeader.append(icon);
                 uviEl.textContent = uvi;
-                console.log(data.current.weather[0].icon);
-                console.log(data);
+              // if statements for uv index condition colors
                 if (uvi <= 2) {
                   uviEl.setAttribute('class', 'bg-success text-white');
                   console.log('Weather conditions are favorable.');

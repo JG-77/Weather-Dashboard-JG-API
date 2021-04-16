@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(147, 172, 253);
+}
+
 main {
 display: block;
 }
@@ -9,6 +13,7 @@ display: block;
 
 .container-body {
     display: block;
+    background-color: white;
     border: solid black;
     max-width: 70%;
     min-width: 70%;
@@ -19,6 +24,7 @@ display: block;
 
 .custom-side {
     border: solid black;
+    background-color: white;
     max-width: 25%;
     padding: 5px;
     margin: 5px;
