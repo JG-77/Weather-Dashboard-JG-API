@@ -35,10 +35,11 @@ function getLatandLon() {
           humidityEl.textContent = 'Humidity: ' + humidity;
           windEl.textContent = 'Wind Speed: ' + windSpeed;
           cityNameHeader.textContent = cityName + ' - ' + currently;
-
-           
           });
-        } 
+        } else {
+          cityNameHeader.style.color = 'red';
+          cityNameHeader.textContent = "Error! (400) Please type in a city name";
+        }
         
       })
 
