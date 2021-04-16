@@ -13,7 +13,7 @@ var uviEl = document.getElementById('uvi');
 
 console.log(citySearch);
 
-function getLatandLon() {
+function getData() {
   var citySearchValue = citySearch.value;
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
     
@@ -33,9 +33,10 @@ function getLatandLon() {
           console.log(tempFahrenheit);
           console.log(data);
           
-          temperatureEl.textContent = 'Temperature: ' + tempFahrenheit;
-          humidityEl.textContent = 'Humidity: ' + humidity;
-          windEl.textContent = 'Wind Speed: ' + windSpeed;
+          temperatureEl.textContent = 'Temperature: ' + tempFahrenheit + ' °F';
+          humidityEl.textContent = 'Humidity: ' + humidity + '%';
+          windEl.textContent = 'Wind Speed: ' + windSpeed + ' MPH';
+          cityNameHeader.style.color = 'blue';
           cityNameHeader.textContent = cityName + ' - ' + currently;
           });
           
@@ -43,11 +44,28 @@ function getLatandLon() {
           cityNameHeader.style.color = 'red';
           cityNameHeader.textContent = "Error! (400) Please type in a city name";
         }
-        
+
+        /*var apiUVI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + lon + '&appid=' + apiKey;
+        fetch(apiUVI)
+        .then(function (response) {
+          if (response.ok) {
+            response.json().then(function (data) {
+
+            }
+            )}
+          })*/ //can I fetch an API inside this fetch?
       })
 
 }
 
+function fiveDayForecast() {
+  //
+}
 
-searchButton.addEventListener('click', getLatandLon); 
+function runAPIs() {
+getData();
+
+};
+
+searchButton.addEventListener('click', runAPIs); 
 
