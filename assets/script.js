@@ -43,6 +43,8 @@ function getData() {
         } else {
           cityNameHeader.style.color = 'red';
           cityNameHeader.textContent = "Error! (400) Please type in a city name";
+          console.error('You need to enter a valid search input value!');
+          return;
         }
 
         /*var apiUVI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + lon + '&appid=' + apiKey;
