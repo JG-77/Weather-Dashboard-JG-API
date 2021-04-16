@@ -60,7 +60,6 @@ function getData() {
             })
             //second call ends here
           });
-          
         } else {
           cityNameHeader.style.color = 'red';
           cityNameHeader.textContent = "Error! (400) Please type in a city name";
@@ -73,12 +72,36 @@ function getData() {
 }
 
 function fiveDayForecast() {
-  //
+  var citySearchValue = citySearch.value;
+  var api5Day = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearchValue + '&appid=' + apiKey + '&units=imperial';
+
+  fetch(api5Day)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          var day1Forecast = data.list[0].dt_txt
+          var day2Forecast = data.list[8].dt_txt
+          var day3Forecast = data.list[16].dt_txt
+          var day4Forecast = data.list[24].dt_txt
+          var day5Forecast = data.list[32].dt_txt
+
+          console.log(data);
+          console.log(day1Forecast);
+          console.log(day2Forecast);
+          console.log(day3Forecast);
+          console.log(day4Forecast);
+          console.log(day5Forecast);
+
+        })
+      }
+    })
+
+
 }
 
 function runAPIs() {
 getData();
-
+fiveDayForecast();
 };
 
 searchButton.addEventListener('click', runAPIs); 
