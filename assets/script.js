@@ -45,11 +45,23 @@ function getData() {
             if (response.ok) {
               response.json().then(function (data) {
                 var uvi = data.current.uvi;
-                uviEl.textContent = 'UV Index: ' + uvi;
-                
+                uviEl.textContent = uvi;
+                if (uvi <= 2) {
+                  uviEl.style.backgroundColor = 'green';
+                  uviEl.style.color = 'white';
+                  console.log('Weather conditions are favorable.');
+                } else if (3 <= uvi && uvi<= 5) {
+                  uviEl.style.backgroundColor = 'orange';
+                  uviEl.style.color = 'white';
+                  console.log('Weather conditions are moderate.');
+                } else {
+                  uviEl.style.backgroundColor = 'red';
+                  uviEl.style.color = 'white';
+                  console.log('Weather conditions are severe.');
+                }
                 
                 console.log(data);
-                console.log(data.current.uvi);
+                console.log(data.daily.uvi);
               }
               )}
             })
