@@ -38,6 +38,22 @@ function getData() {
           windEl.textContent = 'Wind Speed: ' + windSpeed + ' MPH';
           cityNameHeader.style.color = 'blue';
           cityNameHeader.textContent = cityName + ' - ' + currently;
+          //second API call
+          var apiUVI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + lon + '&appid=' + apiKey;
+          fetch(apiUVI)
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (data) {
+                var uvi = data.current.uvi;
+                uviEl.textContent = 'UV Index: ' + uvi;
+                
+                
+                console.log(data);
+                console.log(data.current.uvi);
+              }
+              )}
+            })
+            //second call ends here
           });
           
         } else {
@@ -47,15 +63,6 @@ function getData() {
           return;
         }
 
-        /*var apiUVI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + lon + '&appid=' + apiKey;
-        fetch(apiUVI)
-        .then(function (response) {
-          if (response.ok) {
-            response.json().then(function (data) {
-
-            }
-            )}
-          })*/ //can I fetch an API inside this fetch?
       })
 
 }
