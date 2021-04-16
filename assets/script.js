@@ -3,10 +3,12 @@ var apiKey = '55a9555759d9fcad973a8dd20ec8edde';
 //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key} --> one call api
 var citySearch = document.getElementById('citySearch');
 var searchButton = document.getElementById('searchBtn');
+var cityNameHeader = document.getElementById('cityName');
 var temperatureEl = document.getElementById('temperature');
 var humidityEl = document.getElementById('humidity');
 var windEl = document.getElementById('wind');
 var uviEl = document.getElementById('uvi');
+
 
 console.log(citySearch);
 
@@ -25,11 +27,13 @@ function getLatandLon() {
           var tempFahrenheit = 1.8 * (tempKelvin - 273) +32; 
           var humidity = data.main.humidity;
           var windSpeed = data.wind.speed;
+          var cityName = data.name;
           
           temperatureEl.textContent = 'Temperature: ' + tempFahrenheit;
           humidityEl.textContent = 'Humidity: ' + humidity;
           windEl.textContent = 'Wind Speed: ' + windSpeed;
-
+          cityNameHeader.textContent = cityName;
+          
             console.log(response);
             console.log(data);
             console.log(lat);
@@ -37,6 +41,7 @@ function getLatandLon() {
             console.log(tempFahrenheit);
             console.log(humidity);
             console.log(windSpeed);
+            console.log(cityName);
           });
         } 
         
@@ -44,6 +49,10 @@ function getLatandLon() {
 
 }
 
+function currentDayAndTime() {
+  var currently = moment().format('MMM DD, YYYY');
+
+}
 
 searchButton.addEventListener('click', getLatandLon); 
 
