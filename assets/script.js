@@ -4,6 +4,7 @@ var apiKey = '55a9555759d9fcad973a8dd20ec8edde';
 var citySearch = document.getElementById('citySearch');
 var searchButton = document.getElementById('searchBtn');
 var cityNameHeader = document.getElementById('cityName');
+var currentDate = document.getElementById('todayDate');
 var temperatureEl = document.getElementById('temperature');
 var humidityEl = document.getElementById('humidity');
 var windEl = document.getElementById('wind');
@@ -28,20 +29,14 @@ function getLatandLon() {
           var humidity = data.main.humidity;
           var windSpeed = data.wind.speed;
           var cityName = data.name;
+          var currently = moment().format('MMM DD, YYYY');
           
           temperatureEl.textContent = 'Temperature: ' + tempFahrenheit;
           humidityEl.textContent = 'Humidity: ' + humidity;
           windEl.textContent = 'Wind Speed: ' + windSpeed;
-          cityNameHeader.textContent = cityName;
-          
-            console.log(response);
-            console.log(data);
-            console.log(lat);
-            console.log(lon);
-            console.log(tempFahrenheit);
-            console.log(humidity);
-            console.log(windSpeed);
-            console.log(cityName);
+          cityNameHeader.textContent = cityName + ' - ' + currently;
+
+           
           });
         } 
         
@@ -49,10 +44,6 @@ function getLatandLon() {
 
 }
 
-function currentDayAndTime() {
-  var currently = moment().format('MMM DD, YYYY');
-
-}
 
 searchButton.addEventListener('click', getLatandLon); 
 
