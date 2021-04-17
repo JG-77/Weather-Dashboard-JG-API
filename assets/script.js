@@ -162,7 +162,7 @@ clearBtn.addEventListener('click', clearAll);
 
 
 //click event to make history search function
-searchHistory.addEventListener("click", function (e) {
+searchHistory.addEventListener("click", function (e) { ///??? whats wrong
   console.log(e.target);
   var city = e.target.getAttribute("data-city");
   getData(city);
