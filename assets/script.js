@@ -73,6 +73,11 @@ function getData() {
 function fiveDayForecast() {
   var citySearchValue = citySearch.value;
   var api5Day = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearchValue + '&appid=' + apiKey + '&units=imperial';
+  var card1 = document.getElementById('forecast1');
+  var card2 = document.getElementById('forecast2');
+  var card3 = document.getElementById('forecast3');
+  var card4 = document.getElementById('forecast4');
+  var card5 = document.getElementById('forecast5'); //card elements
 
   fetch(api5Day)
     .then(function (response) {
