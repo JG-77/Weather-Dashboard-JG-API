@@ -15,7 +15,12 @@ var searchHistory = document.getElementById('search-history');
 
 //first API fetch for weather data
 function getData() {
-  var citySearchValue = citySearch.value;
+  var citySearchValue; //= citySearch.value;
+  if(cityString){ 
+    citySearchValue = cityString
+  } else{ 
+    citySearchValue = citySearch.value;
+  }
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
     
   fetch(apiLocation)
