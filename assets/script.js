@@ -79,7 +79,7 @@ function fiveDayForecast() {
       if (response.ok) {
         response.json().then(function (data) {
           for(i = 0; i < 33; i = i + 8) {
-            var forecastDate = data.list[i].dt_txt;
+            var forecastDate = data.list[i].dt_txt.slice(0,10);
             var forecastTemp = data.list[i].main.temp;
             var forecastHum = data.list[i].main.humidity;
             var forecastIcon = data.list[i].weather[0].icon;
@@ -87,9 +87,11 @@ function fiveDayForecast() {
             icon.src = 'https://openweathermap.org/img/wn/' + forecastIcon + '@2x.png';
 
             var forecastDiv = document.createElement('div');
-            forecastDiv.classList = 'card-body border border-dark d-inline-block text-white bg-primary m-1';
-            forecastDiv.textContent = forecastDate;
+            var forecastHeader = document.createElement('h3');
+            forecastDiv.classList = 'card-body font-weight-bolder border border-dark d-inline-block text-white bg-primary m-1';
+            forecastHeader.textContent = forecastDate;
             forecastContainer.appendChild(forecastDiv);
+            forecastDiv.appendChild(forecastHeader);
 
             var tempInfo = document.createElement('p');
             tempInfo.textContent = 'Temperature: ' + forecastTemp + ' °F';
@@ -101,11 +103,7 @@ function fiveDayForecast() {
             forecastDiv.appendChild(icon);
             
             console.log(forecastDate);
-            console.log(forecastTemp);
-            console.log(forecastHum);
-            console.log(forecastIcon);
-            console.log(icon);
-            console.log(icon.src);
+          
             console.log(data);
           }
         })
