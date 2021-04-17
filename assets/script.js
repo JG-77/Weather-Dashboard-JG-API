@@ -129,7 +129,7 @@ function saveHistory() {
             
             var historyDiv = document.createElement('div');
             var historyEl = document.createElement('button');
-            historyEl.setAttribute('class', 'historyBtn');
+            historyEl.setAttribute('id', 'historyBtn');
             var cityLink = document.createElement('a');
 
             searchHistory.appendChild(historyDiv);
@@ -138,7 +138,7 @@ function saveHistory() {
 
             historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
             cityLink.textContent = savedCities[i];
-            cityLink.setAttribute('class', 'data-city');
+            cityLink.setAttribute('data-city', savedCities[i]);
             cityLink.classList = 'text-white';
           }
         })
@@ -158,4 +158,12 @@ searchHistory.innerHTML = '';
 }
 
 searchButton.addEventListener('click', runAPIs); 
-clearBtn.addEventListener('click', clearAll)
+clearBtn.addEventListener('click', clearAll);
+
+
+//click event to make history search function
+searchHistory.addEventListener("click", function (e) {
+  console.log(e.target);
+  var city = e.target.getAttribute("data-city");
+  getData(city);
+})
