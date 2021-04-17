@@ -11,6 +11,8 @@ var forecastContainer = document.getElementById('forecast-conatiner');
 var sidebar = document.getElementById('sidebar');
 var clearBtn = document.getElementById('clear');
 var savedCities = [];
+var searchHistory = document.getElementById('search-history');
+
 
 function getData() {
   var citySearchValue = citySearch.value;
@@ -111,7 +113,7 @@ function fiveDayForecast() {
 }
 
 
-function showHistory() {
+function saveHistory() {
   var citySearchValue = citySearch.value;
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
     
@@ -128,42 +130,48 @@ function showHistory() {
           console.log(savedCitiesGet);
           console.log(newCityVal);
           console.log(savedCities);
-
+          searchHistory.innerHTML = '';
           for(i = 0; i < savedCities.length; i++) {
             
             var historyDiv = document.createElement('div');
 
-            var historyEl = document.createElement('li');
-            var cityLink = document.createElement('a');
-            historyDiv.innerHTML = '';
-            sidebar.appendChild(historyDiv);
-            historyDiv.appendChild(historyEl);
+            var historyEl = document.createElement('button');
+            historyEl.setAttribute('class', 'historyBtn');
 
+            var cityLink = document.createElement('a');
+
+            searchHistory.appendChild(historyDiv);
+            historyDiv.appendChild(historyEl);
             historyEl.appendChild(cityLink)
+
             historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
             cityLink.textContent = savedCities[i];
             cityLink.setAttribute('href', apiLocation);
             cityLink.classList = 'text-white';
 
           }
-
-
-
-
-          
-         
-          
         })
       }
 
     })
 }
 
+function showHistory() {
+
+}
+showHistory();
+
 function runAPIs() {
 getData();
 fiveDayForecast();
-showHistory();
+saveHistory();
 };
 
-searchButton.addEventListener('click', runAPIs); 
+function clearAll() {
+localStorage.clear('cities')
 
+searchHistory.innerHTML = '';
+}
+
+searchButton.addEventListener('click', runAPIs); 
+clearBtn.addEventListener('click', clearAll)
