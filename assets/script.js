@@ -1,6 +1,4 @@
 var apiKey = '55a9555759d9fcad973a8dd20ec8edde';
-//api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key} -->lon and lat api
-//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key} --> one call api
 var citySearch = document.getElementById('citySearch');
 var searchButton = document.getElementById('searchBtn');
 var cityNameHeader = document.getElementById('cityName');
@@ -9,6 +7,7 @@ var temperatureEl = document.getElementById('temperature');
 var humidityEl = document.getElementById('humidity');
 var windEl = document.getElementById('wind');
 var uviEl = document.getElementById('uvi');
+var fiveForecastDiv = document.getElementById('5DayItems');
 
 function getData() {
   var citySearchValue = citySearch.value;
@@ -109,6 +108,10 @@ function fiveDayForecast() {
                 icon3.src = 'https://openweathermap.org/img/wn/' + weatherIcon3 + '@2x.png';
                 icon4.src = 'https://openweathermap.org/img/wn/' + weatherIcon4 + '@2x.png';
                 icon5.src = 'https://openweathermap.org/img/wn/' + weatherIcon5 + '@2x.png';
+          
+
+
+
 
           console.log(data);
           
