@@ -117,17 +117,23 @@ function showHistory() {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          var cityName = data.name;
-          localStorage.setItem(citySearchValue, cityName);
+          var newCityVal = data.name;
+          var savedCities = [];
+          var savedCitiesGet = localStorage.getItem('cities');
+          savedCities.push(newCityVal);
+          localStorage.setItem('cities', savedCities);
+          console.log(savedCitiesGet);
+          console.log(newCityVal);
+          console.log(savedCities);
 
-          var historyEl = document.createElement('li');
+          /*var historyEl = document.createElement('li');
           var cityLink = document.createElement('a');
           historyEl.appendChild(cityLink)
           historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
           cityLink.textContent = localStorage.getItem(citySearchValue);
           cityLink.setAttribute('href', apiLocation);
           cityLink.classList = 'text-white';
-          sidebar.appendChild(historyEl);
+          sidebar.appendChild(historyEl);*/
          
           //localStorage.getItem(citySearchValue, cityName);
           //console.log(data.name);
@@ -138,7 +144,7 @@ function showHistory() {
     })
 }
 
-function checkStorage() { // how do I get it to read local storage??
+/*function checkStorage() { // how do I get it to read local storage??
   var citySearchValue = citySearch.value;
   if(localStorage.getItem(citySearchValue)) {
     var historyEl = document.createElement('li');
@@ -152,7 +158,7 @@ function checkStorage() { // how do I get it to read local storage??
   }
 
 }
-checkStorage();
+checkStorage();*/
 
 function runAPIs() {
 getData();
