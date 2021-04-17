@@ -49,7 +49,7 @@ function getData() {
                 if (uvi <= 2) {
                   uviEl.setAttribute('class', 'bg-success text-white');
                   console.log('Weather conditions are favorable.');
-                } else if (3 <= uvi && uvi<= 5) {
+                } else if (2 < uvi && uvi<= 5) {
                   uviEl.setAttribute('class', 'bg-warning text-white');
                   console.log('Weather conditions are moderate.');
                 } else {
@@ -109,6 +109,7 @@ function fiveDayForecast() {
     })
 }
 
+var savedCities = [];
 function showHistory() {
   var citySearchValue = citySearch.value;
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
@@ -118,13 +119,16 @@ function showHistory() {
       if (response.ok) {
         response.json().then(function (data) {
           var newCityVal = data.name;
-          var savedCities = [];
           var savedCitiesGet = localStorage.getItem('cities');
           savedCities.push(newCityVal);
           localStorage.setItem('cities', savedCities);
           console.log(savedCitiesGet);
           console.log(newCityVal);
           console.log(savedCities);
+
+
+
+
 
           /*var historyEl = document.createElement('li');
           var cityLink = document.createElement('a');
