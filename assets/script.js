@@ -8,6 +8,8 @@ var humidityEl = document.getElementById('humidity');
 var windEl = document.getElementById('wind');
 var uviEl = document.getElementById('uvi');
 var forecastContainer = document.getElementById('forecast-conatiner');
+var sidebar = document.getElementById('sidebar');
+var clearBtn = document.getElementById('clear');
 
 function getData() {
   var citySearchValue = citySearch.value;
@@ -101,14 +103,37 @@ function fiveDayForecast() {
             humidInfo.textContent = 'Humidity: ' + forecastHum + '%';
             forecastDiv.appendChild(humidInfo);
             forecastDiv.appendChild(icon);
-            
-            console.log(forecastDate);
-          
-            console.log(data);
           }
         })
       }
     })
+}
+
+function showHistory() {
+  var citySearchValue = citySearch.value;
+  var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
+    
+  fetch(apiLocation)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          var cityName = data.name;
+          localStorage.setItem(citySearchValue, cityName);
+
+          console.log(data.name);
+          var historyEl = document.createElement('li');
+          var cityLink = document.createElement('a');
+          historyEl.appendChild(cityLink)
+          historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
+          cityLink.textContent = cityName;
+          sidebar.appendChild(historyEl);
+
+          localStorage.getItem(citySearchValue, cityName);
+          console.log (localStorage.getItem(citySearchValue, cityName));
+        })
+        }
+      })
+    
 
 
 }
@@ -116,6 +141,7 @@ function fiveDayForecast() {
 function runAPIs() {
 getData();
 fiveDayForecast();
+showHistory();
 };
 
 searchButton.addEventListener('click', runAPIs); 
