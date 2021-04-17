@@ -120,23 +120,37 @@ function showHistory() {
           var cityName = data.name;
           localStorage.setItem(citySearchValue, cityName);
 
-          console.log(data.name);
           var historyEl = document.createElement('li');
           var cityLink = document.createElement('a');
           historyEl.appendChild(cityLink)
           historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
-          cityLink.textContent = cityName;
+          cityLink.textContent = localStorage.getItem(citySearchValue);
           sidebar.appendChild(historyEl);
-
-          localStorage.getItem(citySearchValue, cityName);
-          console.log (localStorage.getItem(citySearchValue, cityName));
+         
+          //localStorage.getItem(citySearchValue, cityName);
+          //console.log(data.name);
+          //console.log (localStorage.getItem(citySearchValue, cityName));
         })
-        }
-      })
-    
+      }
 
+    })
+}
+
+function checkStorage() { // how do I get it to read local storage??
+  var citySearchValue = citySearch.value;
+  if(localStorage.getItem(citySearchValue)) {
+    var historyEl = document.createElement('li');
+    var cityLink = document.createElement('a');
+    historyEl.appendChild(cityLink)
+    historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
+    cityLink.textContent = localStorage.getItem(citySearchValue);
+    sidebar.appendChild(historyEl);
+  } else {
+    console.log('local storage empty');
+  }
 
 }
+checkStorage();
 
 function runAPIs() {
 getData();
