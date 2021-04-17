@@ -83,44 +83,22 @@ function fiveDayForecast() {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          var day1Forecast = data.list[0].dt_txt; //variables for time/date
-          var day2Forecast = data.list[8].dt_txt;
-          var day3Forecast = data.list[16].dt_txt;
-          var day4Forecast = data.list[24].dt_txt;
-          var day5Forecast = data.list[32].dt_txt;
-          var day1Temp = data.list[0].main.temp; //variables for daily temp
-          var day2Temp = data.list[8].main.temp;
-          var day3Temp = data.list[16].main.temp;
-          var day4Temp = data.list[24].main.temp;
-          var day5Temp = data.list[32].main.temp;
-          var day1Humid = data.list[0].main.humidity; //variable for humidity
-          var day2Humid = data.list[8].main.humidity;
-          var day3Humid = data.list[16].main.humidity;
-          var day4Humid = data.list[24].main.humidity;
-          var day5Humid = data.list[32].main.humidity;
-          var weatherIcon1 = data.list[0].weather[0].icon;//weather icon
-          var weatherIcon2 = data.list[8].weather[0].icon;
-          var weatherIcon3 = data.list[16].weather[0].icon;
-          var weatherIcon4 = data.list[24].weather[0].icon;
-          var weatherIcon5 = data.list[32].weather[0].icon;
-                var icon1 = document.createElement("img");//creating image elements
-                var icon2 = document.createElement("img");
-                var icon3 = document.createElement("img");
-                var icon4 = document.createElement("img");
-                var icon5 = document.createElement("img");
-                icon1.src = 'https://openweathermap.org/img/wn/' + weatherIcon1 + '@2x.png';
-                icon2.src = 'https://openweathermap.org/img/wn/' + weatherIcon2 + '@2x.png';
-                icon3.src = 'https://openweathermap.org/img/wn/' + weatherIcon3 + '@2x.png';
-                icon4.src = 'https://openweathermap.org/img/wn/' + weatherIcon4 + '@2x.png';
-                icon5.src = 'https://openweathermap.org/img/wn/' + weatherIcon5 + '@2x.png';
-          
+          for(i = 0; i < 33; i = i + 8) {
+            var forecastDate = data.list[i].dt_txt;
+            var forecastTemp = data.list[i].main.temp;
+            var forecastHum = data.list[i].main.humidity;
+            var forecastIcon = data.list[i].weather[0].icon;
+            var icon = document.createElement("img");
+            icon.src = 'https://openweathermap.org/img/wn/' + forecastIcon + '@2x.png';
 
-
-
-
-          console.log(data);
-          
-
+            console.log(forecastDate);
+            console.log(forecastTemp);
+            console.log(forecastHum);
+            console.log(forecastIcon);
+            console.log(icon);
+            console.log(icon.src);
+            console.log(data);
+          }
         })
       }
     })
