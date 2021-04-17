@@ -13,7 +13,7 @@ var clearBtn = document.getElementById('clear');
 var savedCities = [];
 var searchHistory = document.getElementById('search-history');
 
-
+//first API fetch for weather data
 function getData() {
   var citySearchValue = citySearch.value;
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
@@ -36,7 +36,7 @@ function getData() {
           windEl.textContent = 'Wind Speed: ' + windSpeed + ' MPH';
           cityNameHeader.style.color = 'blue';
           cityNameHeader.textContent = cityName + ' - ' + currently;
-          //second API call
+          //second API call to retrieve UV index
           var apiUVI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + lon + '&appid=' + apiKey;
           fetch(apiUVI)
           .then(function (response) {
@@ -70,11 +70,9 @@ function getData() {
           console.error('You need to enter a valid search input value!');
           return;
         }
-
       })
-
 }
-
+//API fetch for 5 day forecast
 function fiveDayForecast() {
   var citySearchValue = citySearch.value;
   var api5Day = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearchValue + '&appid=' + apiKey + '&units=imperial';
@@ -83,6 +81,7 @@ function fiveDayForecast() {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          //loop for the 5 day forecast cards
           for(i = 0; i < 33; i = i + 8) {
             var forecastDate = data.list[i].dt_txt.slice(0,10);
             var forecastTemp = data.list[i].main.temp;
@@ -112,7 +111,7 @@ function fiveDayForecast() {
     })
 }
 
-
+//
 function saveHistory() {
   var citySearchValue = citySearch.value;
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
@@ -122,22 +121,15 @@ function saveHistory() {
       if (response.ok) {
         response.json().then(function (data) {
           var newCityVal = data.name;
-          var savedCitiesGet = localStorage.getItem('cities');
           savedCities.push(newCityVal);
           localStorage.setItem('cities', savedCities);
-
-          
-          console.log(savedCitiesGet);
-          console.log(newCityVal);
-          console.log(savedCities);
           searchHistory.innerHTML = '';
+          //loop for creating search history button elements
           for(i = 0; i < savedCities.length; i++) {
             
             var historyDiv = document.createElement('div');
-
             var historyEl = document.createElement('button');
             historyEl.setAttribute('class', 'historyBtn');
-
             var cityLink = document.createElement('a');
 
             searchHistory.appendChild(historyDiv);
@@ -146,30 +138,22 @@ function saveHistory() {
 
             historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
             cityLink.textContent = savedCities[i];
-            cityLink.setAttribute('href', apiLocation);
+            cityLink.setAttribute('class', 'data-city');
             cityLink.classList = 'text-white';
-
           }
         })
       }
-
     })
 }
-
-function showHistory() {
-
-}
-showHistory();
-
+//runs functions at search button click
 function runAPIs() {
 getData();
 fiveDayForecast();
 saveHistory();
 };
-
+//clears local storage and history elelements
 function clearAll() {
 localStorage.clear('cities')
-
 searchHistory.innerHTML = '';
 }
 
