@@ -7,7 +7,7 @@ var temperatureEl = document.getElementById('temperature');
 var humidityEl = document.getElementById('humidity');
 var windEl = document.getElementById('wind');
 var uviEl = document.getElementById('uvi');
-var fiveForecastDiv = document.getElementById('5DayItems');
+var forecastContainer = document.getElementById('forecast-conatiner');
 
 function getData() {
   var citySearchValue = citySearch.value;
@@ -73,11 +73,6 @@ function getData() {
 function fiveDayForecast() {
   var citySearchValue = citySearch.value;
   var api5Day = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearchValue + '&appid=' + apiKey + '&units=imperial';
-  var card1 = document.getElementById('forecast1');
-  var card2 = document.getElementById('forecast2');
-  var card3 = document.getElementById('forecast3');
-  var card4 = document.getElementById('forecast4');
-  var card5 = document.getElementById('forecast5'); //card elements
 
   fetch(api5Day)
     .then(function (response) {
@@ -91,6 +86,20 @@ function fiveDayForecast() {
             var icon = document.createElement("img");
             icon.src = 'https://openweathermap.org/img/wn/' + forecastIcon + '@2x.png';
 
+            var forecastDiv = document.createElement('div');
+            forecastDiv.classList = 'card-body border border-dark d-inline-block text-white bg-primary m-1';
+            forecastDiv.textContent = forecastDate;
+            forecastContainer.appendChild(forecastDiv);
+
+            var tempInfo = document.createElement('p');
+            tempInfo.textContent = 'Temperature: ' + forecastTemp + ' °F';
+            forecastDiv.appendChild(tempInfo);
+
+            var humidInfo = document.createElement('p');
+            humidInfo.textContent = 'Humidity: ' + forecastHum + '%';
+            forecastDiv.appendChild(humidInfo);
+            forecastDiv.appendChild(icon);
+            
             console.log(forecastDate);
             console.log(forecastTemp);
             console.log(forecastHum);

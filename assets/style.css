@@ -11,7 +11,7 @@ display: block;
     color:white;
 }
 
-.container-body {
+#current-style {
     display: block;
     background-color: white;
     border: solid black;
@@ -20,6 +20,15 @@ display: block;
     padding: 5px;
     margin: 5px;
     float: right;
+}
+#forecast-conatiner {
+    background-color: white;
+    border: solid black;
+    max-width: 70%;
+    min-width: 70%;
+    padding: 5px;
+    margin: 5px;
+    float: right; 
 }
 
 .custom-side {
