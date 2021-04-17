@@ -125,6 +125,8 @@ function showHistory() {
           historyEl.appendChild(cityLink)
           historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
           cityLink.textContent = localStorage.getItem(citySearchValue);
+          cityLink.setAttribute('href', apiLocation);
+          cityLink.classList = 'text-white';
           sidebar.appendChild(historyEl);
          
           //localStorage.getItem(citySearchValue, cityName);
