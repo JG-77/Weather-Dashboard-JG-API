@@ -10,6 +10,7 @@ var uviEl = document.getElementById('uvi');
 var forecastContainer = document.getElementById('forecast-conatiner');
 var sidebar = document.getElementById('sidebar');
 var clearBtn = document.getElementById('clear');
+var savedCities = [];
 
 function getData() {
   var citySearchValue = citySearch.value;
@@ -109,7 +110,7 @@ function fiveDayForecast() {
     })
 }
 
-var savedCities = [];
+
 function showHistory() {
   var citySearchValue = citySearch.value;
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
@@ -122,47 +123,41 @@ function showHistory() {
           var savedCitiesGet = localStorage.getItem('cities');
           savedCities.push(newCityVal);
           localStorage.setItem('cities', savedCities);
+
+          
           console.log(savedCitiesGet);
           console.log(newCityVal);
           console.log(savedCities);
 
+          for(i = 0; i < savedCities.length; i++) {
+            
+            var historyDiv = document.createElement('div');
+
+            var historyEl = document.createElement('li');
+            var cityLink = document.createElement('a');
+            historyDiv.innerHTML = '';
+            sidebar.appendChild(historyDiv);
+            historyDiv.appendChild(historyEl);
+
+            historyEl.appendChild(cityLink)
+            historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
+            cityLink.textContent = savedCities[i];
+            cityLink.setAttribute('href', apiLocation);
+            cityLink.classList = 'text-white';
+
+          }
 
 
 
 
-          /*var historyEl = document.createElement('li');
-          var cityLink = document.createElement('a');
-          historyEl.appendChild(cityLink)
-          historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
-          cityLink.textContent = localStorage.getItem(citySearchValue);
-          cityLink.setAttribute('href', apiLocation);
-          cityLink.classList = 'text-white';
-          sidebar.appendChild(historyEl);*/
+          
          
-          //localStorage.getItem(citySearchValue, cityName);
-          //console.log(data.name);
-          //console.log (localStorage.getItem(citySearchValue, cityName));
+          
         })
       }
 
     })
 }
-
-/*function checkStorage() { // how do I get it to read local storage??
-  var citySearchValue = citySearch.value;
-  if(localStorage.getItem(citySearchValue)) {
-    var historyEl = document.createElement('li');
-    var cityLink = document.createElement('a');
-    historyEl.appendChild(cityLink)
-    historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
-    cityLink.textContent = localStorage.getItem(citySearchValue);
-    sidebar.appendChild(historyEl);
-  } else {
-    console.log('local storage empty');
-  }
-
-}
-checkStorage();*/
 
 function runAPIs() {
 getData();
