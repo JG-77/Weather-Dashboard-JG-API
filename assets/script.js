@@ -14,7 +14,7 @@ var savedCities = [];
 var searchHistory = document.getElementById('search-history');
 
 //first API fetch for weather data
-function getData() {
+function getData(cityString) {
   var citySearchValue; //= citySearch.value;
   if(cityString){ 
     citySearchValue = cityString
