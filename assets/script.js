@@ -17,7 +17,7 @@ var currently = moment().format('MMM DD, YYYY');
 
 //first API fetch for weather data
 function getData(cityString) {
-  var citySearchValue; //= citySearch.value;
+  var citySearchValue; 
   if(cityString){ 
     citySearchValue = cityString
   } else{ 
@@ -80,7 +80,13 @@ function getData(cityString) {
 }
 //API fetch for 5 day forecast
 function fiveDayForecast() {
-  var citySearchValue = citySearch.value;
+
+  var citySearchValue; 
+  if(cityString){ 
+    citySearchValue = cityString
+  } else{ 
+    citySearchValue = citySearch.value;
+  }
   var api5Day = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearchValue + '&appid=' + apiKey + '&units=imperial';
 
   fetch(api5Day)
@@ -189,8 +195,9 @@ clearBtn.addEventListener('click', clearAll);
 
 
 //click event to make history search function
-searchHistory.addEventListener("click", function (e) { ///??? whats wrong
+searchHistory.addEventListener("click", function (e) { 
   console.log(e.target);
   var city = e.target.getAttribute("data-city");
   getData(city);
+  fiveDayForecast(city);
 })
