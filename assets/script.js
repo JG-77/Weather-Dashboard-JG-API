@@ -127,7 +127,7 @@ function saveHistory() {
         response.json().then(function (data) {
           var newCityVal = data.name;
           savedCities.push(newCityVal);
-          localStorage.setItem('cities', savedCities);
+          localStorage.setItem('cities', JSON.stringify(savedCities));
           searchHistory.innerHTML = '';
           //loop for creating search history button elements
           for(i = 0; i < savedCities.length; i++) {
@@ -152,7 +152,7 @@ function saveHistory() {
 }
 
 function displayHistory() {
-  var getCity = localStorage.getItem('cities', savedCities);
+  var savedCities = JSON.parse(localStorage.getItem('cities'));
   for(i = 0; i < savedCities.length; i++) {
             
     var historyDiv = document.createElement('div');
@@ -163,15 +163,14 @@ function displayHistory() {
     searchHistory.appendChild(historyDiv);
     historyDiv.appendChild(historyEl);
     historyEl.appendChild(cityLink)
-
     historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
     cityLink.textContent = savedCities[i];
     cityLink.setAttribute('data-city', savedCities[i]);
     cityLink.classList = 'text-white';
   }
 }
+
 displayHistory();
-console.log(localStorage.getItem('cities', savedCities));
 
 //runs functions at search button click
 function runAPIs() {
