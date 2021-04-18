@@ -152,7 +152,7 @@ function saveHistory() {
 }
 
 function displayHistory() {
-  var savedCities = localStorage.getItem('cities', savedCities);
+  var getCity = localStorage.getItem('cities', savedCities);
   for(i = 0; i < savedCities.length; i++) {
             
     var historyDiv = document.createElement('div');
@@ -170,6 +170,7 @@ function displayHistory() {
     cityLink.classList = 'text-white';
   }
 }
+displayHistory();
 console.log(localStorage.getItem('cities', savedCities));
 
 //runs functions at search button click
