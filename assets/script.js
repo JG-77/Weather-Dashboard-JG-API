@@ -10,8 +10,10 @@ var uviEl = document.getElementById('uvi');
 var forecastContainer = document.getElementById('forecast-conatiner');
 var sidebar = document.getElementById('sidebar');
 var clearBtn = document.getElementById('clear');
+  clearBtn.classList = 'm-1'
 var savedCities = [];
 var searchHistory = document.getElementById('search-history');
+var currently = moment().format('MMM DD, YYYY');
 
 //first API fetch for weather data
 function getData(cityString) {
@@ -34,7 +36,6 @@ function getData(cityString) {
           var humidity = data.main.humidity;
           var windSpeed = data.wind.speed;
           var cityName = data.name;
-          var currently = moment().format('MMM DD, YYYY');
           
           temperatureEl.textContent = 'Temperature: ' + tempFahrenheit + ' °F';
           humidityEl.textContent = 'Humidity: ' + humidity + '%';
@@ -94,11 +95,10 @@ function fiveDayForecast() {
             var forecastIcon = data.list[i].weather[0].icon;
             var icon = document.createElement("img");
             icon.src = 'https://openweathermap.org/img/wn/' + forecastIcon + '@2x.png';
-
             var forecastDiv = document.createElement('div');
             var forecastHeader = document.createElement('h3');
             forecastDiv.classList = 'card-body font-weight-bolder border border-dark d-inline-block text-white bg-primary m-1';
-            forecastHeader.textContent = forecastDate;
+            forecastHeader.textContent =  data.city.name + ' ' + forecastDate;
             forecastContainer.appendChild(forecastDiv);
             forecastDiv.appendChild(forecastHeader);
 
@@ -116,7 +116,7 @@ function fiveDayForecast() {
     })
 }
 
-//
+//creates search history items and saves to local storage
 function saveHistory() {
   var citySearchValue = citySearch.value;
   var apiLocation = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearchValue + '&appid=' + apiKey;
