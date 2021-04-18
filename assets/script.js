@@ -150,6 +150,28 @@ function saveHistory() {
       }
     })
 }
+
+function displayHistory() {
+  var savedCities = localStorage.getItem('cities', savedCities);
+  for(i = 0; i < savedCities.length; i++) {
+            
+    var historyDiv = document.createElement('div');
+    var historyEl = document.createElement('button');
+    historyEl.setAttribute('id', 'historyBtn');
+    var cityLink = document.createElement('a');
+
+    searchHistory.appendChild(historyDiv);
+    historyDiv.appendChild(historyEl);
+    historyEl.appendChild(cityLink)
+
+    historyEl.classList = 'bg-secondary border border-dark text-white list-group-item';
+    cityLink.textContent = savedCities[i];
+    cityLink.setAttribute('data-city', savedCities[i]);
+    cityLink.classList = 'text-white';
+  }
+}
+console.log(localStorage.getItem('cities', savedCities));
+
 //runs functions at search button click
 function runAPIs() {
 getData();
