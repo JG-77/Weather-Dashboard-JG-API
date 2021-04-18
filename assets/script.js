@@ -79,7 +79,7 @@ function getData(cityString) {
       })
 }
 //API fetch for 5 day forecast
-function fiveDayForecast() {
+function fiveDayForecast(cityString) {
 
   var citySearchValue; 
   if(cityString){ 
@@ -158,7 +158,7 @@ function saveHistory() {
 }
 
 function displayHistory() {
-  var savedCities = JSON.parse(localStorage.getItem('cities'));
+  var savedCities = JSON.parse(localStorage.getItem('cities')) || [];
   for(i = 0; i < savedCities.length; i++) {
             
     var historyDiv = document.createElement('div');
