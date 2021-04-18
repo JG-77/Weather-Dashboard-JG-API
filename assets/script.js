@@ -158,10 +158,8 @@ function saveHistory() {
 }
 
 function displayHistory() {
-  var savedCities = JSON.parse(localStorage.getItem('cities')); // || [];
-  if (!savedCities) {
-    savedCities = [];
-}
+  var savedCities = JSON.parse(localStorage.getItem('cities')) || [];
+ 
   for(i = 0; i < savedCities.length; i++) {
             
     var historyDiv = document.createElement('div');
