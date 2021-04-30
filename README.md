@@ -4,6 +4,8 @@ Github Repo: https://github.com/JG-77/Weather-Dashboard-JG-API.git
 
 Github Pages URL: https://jg-77.github.io/Weather-Dashboard-JG-API/
 
+![Weather Dash Homepage](https://user-images.githubusercontent.com/76461629/116637357-888a3400-a918-11eb-9382-6f39fbb61f0d.png)
+
 ![Weather Dash Screenshot](https://user-images.githubusercontent.com/76461629/115128337-ff771280-9f91-11eb-9f11-d7770a8b7a40.png)
 
 ## Description 
@@ -54,7 +56,9 @@ Jessie Guadarrama: <jesguadarrama98@gmail.com>
 The MIT License (MIT)
 
 Copyright (c) 2011-2018 Twitter, Inc.
+
 Copyright (c) 2011-2018 The Bootstrap Authors
+
 Copyright (c) JS Foundation and other contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
